@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:my_app/view/control_view.dart';
 
 import 'helper/binding.dart';
-import 'view/auth/login_screen.dart';
+import 'view/auth/login_view.dart';
 
 Future
 //void

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 import '../../constance.dart';
-import '../auth/second_screen.dart';
+
 import 'custom_text.dart';
 
 class CustomButton extends StatelessWidget {

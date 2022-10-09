@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_app/view/auth/login_screen.dart';
+import 'package:my_app/view/auth/login_view.dart';
 
 class HomeView extends StatelessWidget {
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
         child: Text('Logout'),
         onPressed: (() {
           _auth.signOut();
-          Get.offAll(LoginScreen());
+          Get.offAll(LoginView());
         }),
       ),
     );
