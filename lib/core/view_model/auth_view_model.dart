@@ -1,18 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+//import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:my_app/model/user_model.dart';
 import 'package:my_app/view/home_view.dart';
 
+import '../../view/control_view.dart';
 import '../services/firestore_user.dart';
 
 class AuthViewModel extends GetxController {
   GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
   FirebaseAuth _auth = FirebaseAuth.instance;
-  FacebookLogin _facebookLogin = FacebookLogin();
+  //FacebookLogin _facebookLogin = FacebookLogin();
 
   late String email, password, name;
   Rxn<User> _user = Rxn<User>();
@@ -45,28 +46,30 @@ class AuthViewModel extends GetxController {
 
     await _auth.signInWithCredential(credential).then((user) async {
       saveUser(user);
-      Get.offAll(() => HomeView());
+      Get.offAll(() => ControlView());
     });
   }
 
-  void facebookSigningMethod() async {
-    FacebookLoginResult result = await _facebookLogin.logIn(['email']);
+  // void facebookSigningMethod() async {
+  //   FacebookLoginResult result = await _facebookLogin.logIn(['email']);
 
-    final accessToken = result.accessToken.token;
+  //   final accessToken = result.accessToken.token;
 
-    if (result.status == FacebookLoginStatus.loggedIn) {
-      final faceCedential = FacebookAuthProvider.credential(accessToken);
+  //   if (result.status == FacebookLoginStatus.loggedIn) {
+  //     final faceCedential = FacebookAuthProvider.credential(accessToken);
 
-      await _auth.signInWithCredential(faceCedential);
-    }
-  }
+  //     await _auth.signInWithCredential(faceCedential);
+  //   }
+  // }
 
   void signInWithEmailAndPassword() async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-      Get.offAll(HomeView());
+      Get.offAll(ControlView());
     } catch (e) {
-      Get.snackbar('Error login account', '');
+      Get.snackbar('Error', 'wrong email or password',
+          padding: EdgeInsets.all(10),
+          margin: EdgeInsets.only(top: 7, left: 15, right: 15));
     }
   }
 
@@ -80,7 +83,9 @@ class AuthViewModel extends GetxController {
 
       Get.offAll(HomeView());
     } catch (e) {
-      Get.snackbar('Error login account', '');
+      Get.snackbar('Error', 'account not created',
+          padding: EdgeInsets.all(10),
+          margin: EdgeInsets.only(top: 7, left: 15, right: 15));
     }
   }
 

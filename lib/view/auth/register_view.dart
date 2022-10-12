@@ -14,87 +14,92 @@ class RegisterView extends GetWidget<AuthViewModel> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          color: Colors.black,
-          onPressed: (() {
-            Get.off(LoginView());
-          }),
-        ),
-      ),
-      body: Padding(
-        padding:
-            const EdgeInsets.only(top: 100, right: 20, left: 20, bottom: 60),
+      body: Container(
+        padding: EdgeInsets.only(top: 100),
         child: Form(
           key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CustomText(text: 'Sign Up,', fontSize: 30),
-              const SizedBox(
-                height: 40,
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                color: Colors.black,
+                onPressed: (() {
+                  Get.off(LoginView());
+                }),
               ),
-              CustomTextFormField(
-                text: 'Name',
-                hint: 'Pesa',
-                onSave: (value) {
-                  controller.name = value!;
-                },
-                validator: (value) {
-                  if (value == null) {
-                    print('ERROR');
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              CustomTextFormField(
-                text: 'Email',
-                hint: 'iamdavid@gmail.com',
-                onSave: (value) {
-                  controller.email = value!;
-                },
-                validator: (value) {
-                  if (value == null) {
-                    print('ERROR');
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              CustomTextFormField(
-                text: 'Password',
-                hint: '*********',
-                onSave: (value) {
-                  controller.password = value!;
-                },
-                validator: (value) {
-                  if (value == null) {
-                    print('ERROR');
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                height: 70,
-              ),
-              CustomButton(
-                text: 'SIGN UP',
-                onPressed: () {
-                  _formKey.currentState!.save();
-                  if (_formKey.currentState!.validate()) {
-                    controller.createAccountWithEmailAndPassword();
-                  }
-                },
-              ),
-              SizedBox(
-                height: 20,
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 30, right: 20, left: 20, bottom: 60),
+                child: Column(
+                  children: [
+                    CustomText(text: 'Sign Up,', fontSize: 30),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    CustomTextFormField(
+                      text: 'Name',
+                      hint: 'Pesa',
+                      onSave: (value) {
+                        controller.name = value!;
+                      },
+                      validator: (value) {
+                        if (value == null) {
+                          print('ERROR');
+                        }
+                      },
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    CustomTextFormField(
+                      text: 'Email',
+                      hint: 'iamdavid@gmail.com',
+                      onSave: (value) {
+                        controller.email = value!;
+                      },
+                      validator: (value) {
+                        if (value == null) {
+                          print('ERROR');
+                        }
+                      },
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    CustomTextFormField(
+                      text: 'Password',
+                      hint: '*********',
+                      onSave: (value) {
+                        controller.password = value!;
+                      },
+                      validator: (value) {
+                        if (value == null) {
+                          print('ERROR');
+                        }
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 70,
+                    ),
+                    CustomButton(
+                      text: 'SIGN UP',
+                      onPressed: () {
+                        _formKey.currentState!.save();
+                        if (_formKey.currentState!.validate()) {
+                          controller.createAccountWithEmailAndPassword();
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

@@ -36,7 +36,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                   ),
                 ],
               ),
-              const CustomText(
+              CustomText(
                 text: 'Sign in to Continue',
                 fontSize: 14,
                 color: Colors.grey,
@@ -72,7 +72,7 @@ class LoginView extends GetWidget<AuthViewModel> {
               const SizedBox(
                 height: 10,
               ),
-              const CustomText(
+              CustomText(
                 text: 'Forgot Password?',
                 fontSize: 14,
                 alignment: Alignment.topRight,
