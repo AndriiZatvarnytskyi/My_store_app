@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         initialBinding: Binding(),
         home: Scaffold(
           body: ControlView(),
-        ));
+        ),
+        theme: ThemeData(fontFamily: 'SourceSans'));
   }
 }

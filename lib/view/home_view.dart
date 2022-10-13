@@ -7,6 +7,7 @@ import 'package:my_app/core/view_model/control_view_model.dart';
 import 'package:my_app/core/view_model/home_view_model.dart';
 import 'package:my_app/view/auth/login_view.dart';
 import 'package:my_app/view/cart_view.dart';
+import 'package:my_app/view/details_view.dart';
 import 'package:my_app/view/profile_view.dart';
 import 'package:my_app/view/widgets/custom_text.dart';
 
@@ -112,52 +113,58 @@ class HomeView extends StatelessWidget {
                 itemCount: controller.productModel.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width * 0.38,
-                    child: Column(
-                      children: [
-                        Container(
-                            width: MediaQuery.of(context).size.width * 0.38,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.grey.shade100),
-                            child: Container(
-                                height: 200,
-                                child: Image.network(
-                                  controller.productModel[index].image,
-                                  fit: BoxFit.fill,
-                                ))),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        CustomText(
-                          text: controller.productModel[index].name,
-                          alignment: Alignment.bottomLeft,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          alignment: Alignment.bottomLeft,
-                          child: Text(
-                            controller.productModel[index].description,
-                            style: TextStyle(
-                              color: Colors.grey,
-                            ),
-                            maxLines: 1,
+                  return GestureDetector(
+                    onTap: () {
+                      Get.to(
+                          DetailsView(model: controller.productModel[index]));
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.38,
+                      child: Column(
+                        children: [
+                          Container(
+                              width: MediaQuery.of(context).size.width * 0.38,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.grey.shade100),
+                              child: Container(
+                                  height: 200,
+                                  child: Image.network(
+                                    controller.productModel[index].image,
+                                    fit: BoxFit.cover,
+                                  ))),
+                          SizedBox(
+                            height: 10,
                           ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        CustomText(
-                          text:
-                              controller.productModel[index].price.toString() +
-                                  ' \$',
-                          alignment: Alignment.bottomLeft,
-                          color: primaryColor,
-                        )
-                      ],
+                          CustomText(
+                            text: controller.productModel[index].name,
+                            alignment: Alignment.bottomLeft,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            child: Text(
+                              controller.productModel[index].description,
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
+                              maxLines: 1,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          CustomText(
+                            text: controller.productModel[index].price
+                                    .toString() +
+                                ' \$',
+                            alignment: Alignment.bottomLeft,
+                            color: primaryColor,
+                          )
+                        ],
+                      ),
                     ),
                   );
                 }),

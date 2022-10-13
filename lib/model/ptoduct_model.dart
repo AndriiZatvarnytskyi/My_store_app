@@ -1,5 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:my_app/helper/extenstion.dart';
+
 class ProductModel {
-  late String name, image, description, color, sized, price;
+  late String name, image, description, sized, price;
+  late Color color;
 
   ProductModel(
       {required this.name,
@@ -16,7 +20,7 @@ class ProductModel {
     name = map['name'];
     image = map['image'];
     description = map['description'];
-    color = map['color'];
+    color = HexColor.fromHex(map['color']);
     sized = map['sized'];
     price = map['price'];
   }
