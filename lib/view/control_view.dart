@@ -17,6 +17,7 @@ class ControlView extends GetWidget<AuthViewModel> {
       return (Get.find<AuthViewModel>().user == null)
           ? LoginView()
           : GetBuilder<ControlViewModel>(
+              init: ControlViewModel(),
               builder: (controller) => Scaffold(
                   bottomNavigationBar: bottomNavigationBar(),
                   body: controller.currentScreen),
@@ -32,14 +33,14 @@ class ControlView extends GetWidget<AuthViewModel> {
                 BottomNavigationBarItem(
                     activeIcon: Padding(
                       padding: const EdgeInsets.only(top: 18.0),
-                      child: Text('Explore'),
+                      child: Text('Shop'),
                     ),
                     label: '',
                     icon: Container(
                       width: 25,
                       height: 25,
                       child: Image.asset(
-                        'assets/icons/click.png',
+                        'assets/icons/shop.png',
                         fit: BoxFit.contain,
                       ),
                     )),

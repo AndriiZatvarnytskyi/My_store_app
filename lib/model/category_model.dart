@@ -2,7 +2,7 @@ class CategoryModel {
   late String name, image;
   CategoryModel({required this.image, required this.name});
 
-  CategoryModel.fromJson(Map<dynamic, dynamic> map) {
+  CategoryModel.fromJson(Map<String, dynamic> map) {
     if (map == null) {
       return;
     }

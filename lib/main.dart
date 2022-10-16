@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_app/view/control_view.dart';
 
+import 'core/view_model/cart_view_model.dart';
 import 'helper/binding.dart';
 import 'view/auth/login_view.dart';
 
@@ -11,6 +12,8 @@ Future
     main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Get.put(CartViewModel());
+
   runApp(const MyApp());
 }
 

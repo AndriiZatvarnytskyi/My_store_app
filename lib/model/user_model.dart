@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_app/view/cart_view.dart';
 
 class UserModel {
-  late String userId, email, name, pic;
+  String? userId, email, name, pic;
   UserModel(
       {required this.userId,
       required this.email,
       required this.name,
       required this.pic});
 
-  UserModel.fromJson(Map<String, dynamic> map) {
+  UserModel.fromJson(Map<dynamic, dynamic> map) {
     if (map == null) {
       return;
     }

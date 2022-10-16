@@ -25,8 +25,8 @@ class HomeViewModel extends GetxController {
     HomeServices().getCategory().then((value) {
       for (int i = 0; i < value.length; i++) {
         _categoryModel.add(
-            CategoryModel.fromJson(value[i].data() as Map<dynamic, dynamic>));
-        
+            CategoryModel.fromJson(value[i].data() as Map<String, dynamic>));
+
         _loading.value = false;
       }
       update();

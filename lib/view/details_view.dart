@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_app/constance.dart';
+import 'package:my_app/core/view_model/cart_view_model.dart';
 import 'package:my_app/view/widgets/custom_button.dart';
 
+import '../model/cart_product_model.dart';
 import '../model/ptoduct_model.dart';
 import 'widgets/custom_text.dart';
 
@@ -104,8 +107,9 @@ class DetailsView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -120,11 +124,25 @@ class DetailsView extends StatelessWidget {
                         )
                       ],
                     ),
-                    Container(
-                        width: 180,
-                        height: 100,
-                        padding: EdgeInsets.only(top: 20, left: 20, bottom: 20),
-                        child: CustomButton(text: 'ADD', onPressed: () {}))
+                    GetBuilder<CartViewModel>(
+                        init: CartViewModel(),
+                        builder: (controller) => Container(
+                            width: 150,
+                            height: 60,
+                            margin:
+                                EdgeInsets.only(top: 20, left: 20, bottom: 20),
+                            child: CustomButton(
+                                text: 'ADD',
+                                onPressed: () {
+                                  controller.addProduct(CartProductModel(
+                                    name: model.name,
+                                    image: model.image,
+                                    price: model.price,
+                                    quantity: 1,
+                                    productId: model.productId,
+                                  ));
+                                  ;
+                                })))
                   ],
                 ),
               )

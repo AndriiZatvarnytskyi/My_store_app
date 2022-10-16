@@ -99,19 +99,19 @@ class LoginView extends GetWidget<AuthViewModel> {
               SizedBox(
                 height: 20,
               ),
-              CustomButtonSocial(
-                onPressed: () {
-                  // controller.facebookSigningMethod();
-                },
-                text: 'Sign In with Facebook',
-                imageName: 'assets/icons/facebook.png',
-              ),
+              // CustomButtonSocial(
+              //   onPressed: () {
+              //     // controller.facebookSigningMethod();
+              //   },
+              //   text: 'Sign In with Facebook',
+              //   imageName: 'assets/icons/facebook.png',
+              // ),
               SizedBox(
                 height: 20,
               ),
               CustomButtonSocial(
                 onPressed: () {
-                  controller.googleGignInMethod();
+                  controller.signInWithGoogle();
                 },
                 text: 'Sign In with Google',
                 imageName: 'assets/icons/google.png',
