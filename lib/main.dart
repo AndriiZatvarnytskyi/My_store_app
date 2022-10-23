@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_app/constance.dart';
 import 'package:my_app/view/control_view.dart';
 
 import 'core/view_model/cart_view_model.dart';
@@ -29,6 +30,8 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           body: ControlView(),
         ),
-        theme: ThemeData(fontFamily: 'SourceSans'));
+        theme: ThemeData(
+          fontFamily: 'SourceSans',
+        ));
   }
 }

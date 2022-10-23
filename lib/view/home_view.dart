@@ -9,6 +9,7 @@ import 'package:my_app/view/auth/login_view.dart';
 import 'package:my_app/view/cart_view.dart';
 import 'package:my_app/view/details_view.dart';
 import 'package:my_app/view/profile_view.dart';
+import 'package:my_app/view/widgets/custom_bottom_button.dart';
 import 'package:my_app/view/widgets/custom_text.dart';
 
 class HomeView extends StatelessWidget {
@@ -59,6 +60,9 @@ class HomeView extends StatelessWidget {
                       height: 20,
                     ),
                     _listViewProducts(),
+                    SizedBox(
+                      height: 50,
+                    ),
                   ],
                 ),
               ),
@@ -162,7 +166,7 @@ class HomeView extends StatelessWidget {
                                 ' \$',
                             alignment: Alignment.bottomLeft,
                             color: primaryColor,
-                          )
+                          ),
                         ],
                       ),
                     ),

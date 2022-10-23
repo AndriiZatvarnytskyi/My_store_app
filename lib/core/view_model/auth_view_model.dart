@@ -29,6 +29,9 @@ class AuthViewModel extends GetxController {
   void onInit() {
     super.onInit();
     _user.bindStream(_auth.authStateChanges());
+    if (_auth.currentUser != null) {
+      getCurrentUserData(_auth.currentUser!.uid);
+    }
   }
 
   @override
@@ -41,21 +44,6 @@ class AuthViewModel extends GetxController {
     super.onClose();
   }
 
-  // void googleGignInMethod() async {
-  //   final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-  //   GoogleSignInAuthentication googleSignInAuthentication =
-  //       await googleUser!.authentication;
-  //   final AuthCredential credential = GoogleAuthProvider.credential(
-  //     idToken: googleSignInAuthentication.idToken,
-  //     accessToken: googleSignInAuthentication.accessToken,
-  //   );
-
-  //   await _auth.signInWithCredential(credential).then((user) {
-  //     saveUser(user);
-  //     Get.offAll(() => ControlView());
-  //   });
-  // }
-
   void signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication? googleAuth =
@@ -63,25 +51,6 @@ class AuthViewModel extends GetxController {
     final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth!.accessToken, idToken: googleAuth.idToken);
 
-    // UserCredential? userCredential =
-    //     await _auth.signInWithCredential(credential).then((user) {
-    //   saveUser(user);
-    //   Get.offAll(() => ControlView());
-    // });
-    // User? user = userCredential!.user;
-    // Get.offAll(() => ControlView());
-
-    // if (user != null) {
-    //   if (userCredential.additionalUserInfo!.isNewUser) {
-    //     // add the data to fire base
-    //     await _firestore.collection('Users').doc(user.uid).set({
-    //       'name': user.displayName,
-    //       'userId': user.uid,
-    //       'pic': user.photoURL,
-    //       'email': user.email
-    //     });
-    //   }
-    // }
     await _auth.signInWithCredential(credential).then((user) {
       saveUser(user);
       Get.offAll(() => ControlView());
@@ -105,9 +74,7 @@ class AuthViewModel extends GetxController {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) async {
-        await FireStoreUser().getCurrentUser(value.user!.uid).then((value) {
-          setUser(UserModel.fromJson(value.data() as Map<String, dynamic>));
-        });
+        getCurrentUserData(value.user!.uid);
       });
       Get.offAll(ControlView());
     } catch (e) {
@@ -143,6 +110,12 @@ class AuthViewModel extends GetxController {
             : user.user!.photoURL);
     await FireStoreUser().addUserToFireStore(userModel);
     setUser(userModel);
+  }
+
+  void getCurrentUserData(String uid) async {
+    await FireStoreUser().getCurrentUser(uid).then((value) {
+      setUser(UserModel.fromJson(value.data() as Map<String, dynamic>));
+    });
   }
 
   void setUser(UserModel userModel) async {

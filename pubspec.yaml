@@ -46,6 +46,10 @@ dependencies:
   #jitsi_meet: ^4.0.0
   firebase_storage: ^10.3.11
   firebase_crashlytics: ^2.9.0
+  flutter_svg: ^1.1.5
+  status_change: ^2.0.0
+  flutter_timeline: ^0.3.0
+  im_stepper: ^1.0.1+1
   #flutter_facebook_login: ^3.0.0
   #flutter_login_facebook: ^1.6.0
   #flutter_facebook_auth: ^4.4.1+1

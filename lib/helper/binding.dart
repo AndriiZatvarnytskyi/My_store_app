@@ -4,6 +4,7 @@ import 'package:my_app/helper/local_storage_data.dart';
 
 import '../core/view_model/auth_view_model.dart';
 import '../core/view_model/cart_view_model.dart';
+import '../core/view_model/checkout_view_model.dart';
 import '../core/view_model/home_view_model.dart';
 import '../core/view_model/profile_view_model.dart';
 
@@ -15,5 +16,6 @@ class Binding extends Bindings {
     Get.lazyPut(() => HomeViewModel());
     Get.lazyPut(() => CartViewModel());
     Get.lazyPut(() => LocalStorageData());
+    Get.lazyPut(() => CheckOutViewModel());
   }
 }
