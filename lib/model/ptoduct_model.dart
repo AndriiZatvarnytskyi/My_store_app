@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_app/helper/extenstion.dart';
 
 class ProductModel {
-  late String productId, name, image, description, sized, price;
+  late String productId, name, description, sized, price;
+  late List<String> image;
   late Color color;
 
   ProductModel(
@@ -19,7 +20,11 @@ class ProductModel {
       return;
     }
     name = map['name'];
-    image = map['image'];
+    image = [
+      map['image']['0'].toString(),
+      map['image']['1'].toString(),
+      map['image']['2'].toString()
+    ];
     description = map['description'];
     color = HexColor.fromHex(map['color']);
     sized = map['sized'];

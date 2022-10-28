@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_app/constance.dart';
@@ -7,6 +7,8 @@ import 'package:my_app/core/view_model/checkout_view_model.dart';
 import 'package:my_app/view/widgets/custom_text.dart';
 
 class Summary extends StatelessWidget {
+  const Summary({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -17,11 +19,11 @@ class Summary extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     height: 350,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
@@ -43,10 +45,10 @@ class Summary extends StatelessWidget {
                                   maxLines: 1,
                                   textAlign: TextAlign.start,
                                   text: TextSpan(
-                                      style: TextStyle(color: Colors.black),
+                                      style: const TextStyle(color: Colors.black),
                                       text: controller
                                           .cartProductModel[index].name)),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               CustomText(
@@ -61,13 +63,13 @@ class Summary extends StatelessWidget {
                       ),
                       itemCount: controller.cartProductModel.length,
                       separatorBuilder: (BuildContext context, int index) {
-                        return SizedBox(
+                        return const SizedBox(
                           width: 15,
                         );
                       },
                     )),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: CustomText(
                     text: 'Shipping Addres',
                     fontSize: 24,

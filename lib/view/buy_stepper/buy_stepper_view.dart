@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:my_app/constance.dart';
-import 'package:my_app/view/cart_view.dart';
-
 import '../../core/view_model/checkout_view_model.dart';
 import '../../helper/enum.dart';
 import '../widgets/custom_bottom_button.dart';
@@ -14,6 +12,8 @@ import 'widgets/summary_widget.dart';
 //import 'stepper.dart';
 
 class BuyStepperView extends StatefulWidget {
+  const BuyStepperView({super.key});
+
   @override
   _BuyStepperView createState() => _BuyStepperView();
 }
@@ -32,7 +32,7 @@ class _BuyStepperView extends State<BuyStepperView> {
           child: Column(
             children: [
               controller.header(),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               DotStepper(
@@ -56,7 +56,7 @@ class _BuyStepperView extends State<BuyStepperView> {
                   strokeWidth: 1,
                 ),
 
-                indicatorDecoration: IndicatorDecoration(
+                indicatorDecoration: const IndicatorDecoration(
                   color: primaryColor,
                 ),
               ),
@@ -67,7 +67,7 @@ class _BuyStepperView extends State<BuyStepperView> {
                           ? AddAddress()
                           : Summary()),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -92,7 +92,7 @@ class _BuyStepperView extends State<BuyStepperView> {
                         textColor: Colors.black,
                       ),
                     if (controller.index < 2) Expanded(child: Container()),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     CustomBottomButton(

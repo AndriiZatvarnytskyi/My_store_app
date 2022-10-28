@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:my_app/view/cart_view.dart';
-
 class UserModel {
   String? userId, email, name, pic;
   UserModel(

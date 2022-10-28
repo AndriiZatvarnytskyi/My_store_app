@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import 'custom_text.dart';
 
@@ -32,7 +30,7 @@ class CustomTextFormField extends StatelessWidget {
             validator: validator,
             decoration: InputDecoration(
                 hintText: hint,
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: const TextStyle(color: Colors.grey),
                 fillColor: Colors.white),
           )
         ],

@@ -1,143 +1,175 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:my_app/constance.dart';
 import 'package:my_app/core/view_model/cart_view_model.dart';
-import 'package:my_app/view/checkout/checkout_view.dart';
 import 'package:my_app/view/widgets/custom_bottom_button.dart';
 import 'buy_stepper/buy_stepper_view.dart';
-import 'widgets/custom_button.dart';
 import 'widgets/custom_text.dart';
 
-class CartView extends StatelessWidget {
+class CartView extends StatefulWidget {
+  const CartView({super.key});
+
+  @override
+  State<CartView> createState() => _CartViewState();
+}
+
+class _CartViewState extends State<CartView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CartViewModel>(
         init: CartViewModel(),
         builder: (controller) => Scaffold(
             body: controller.cartProductModel.length == 0
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                        'assets/icons/empty_cart.svg',
-                        width: 200,
-                        height: 200,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      CustomText(
-                        text: 'Cart Empty',
-                        color: Color.fromARGB(255, 12, 35, 66),
-                        fontSize: 32,
-                        alignment: Alignment.center,
-                      )
-                    ],
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons/empty_cart.svg',
+                          width: 200,
+                          height: 200,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const CustomText(
+                          text: 'Cart Empty',
+                          color: Color.fromARGB(255, 12, 35, 66),
+                          fontSize: 32,
+                          alignment: Alignment.center,
+                        )
+                      ],
+                    ),
                   )
                 : Column(
                     children: [
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(top: 15),
+                          margin: const EdgeInsets.only(left: 20),
                           child: ListView.separated(
                             itemBuilder: (context, index) {
-                              return Container(
-                                  height: 120,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                          width: 120,
-                                          child: Image.network(
-                                              controller.cartProductModel[index]
-                                                  .image,
-                                              fit: BoxFit.cover)),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 20),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            CustomText(
-                                              text: controller
-                                                  .cartProductModel[index].name,
-                                              fontSize: 18,
-                                            ),
-                                            SizedBox(
-                                              height: 10,
-                                            ),
-                                            CustomText(
-                                              text:
-                                                  '\$ ${controller.cartProductModel[index].price.toString()}',
-                                              color: primaryColor,
-                                            ),
-                                            SizedBox(
-                                              height: 20,
-                                            ),
-                                            Container(
-                                              width: 140,
-                                              color: Colors.grey.shade200,
-                                              height: 40,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  GestureDetector(
-                                                      onTap: () {
-                                                        controller
-                                                            .increaseQuantity(
-                                                                index);
-                                                      },
-                                                      child: Icon(Icons.add,
-                                                          color: Colors.black)),
-                                                  SizedBox(
-                                                    width: 20,
-                                                  ),
-                                                  CustomText(
-                                                    alignment: Alignment.center,
-                                                    fontSize: 20,
-                                                    color: Colors.black,
-                                                    text: controller
-                                                        .cartProductModel[index]
-                                                        .quantity
-                                                        .toString(),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 20,
-                                                  ),
-                                                  GestureDetector(
-                                                      onTap: () {
-                                                        controller
-                                                            .decreaseQuantity(
-                                                                index);
-                                                      },
-                                                      child: Container(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  bottom: 15),
-                                                          child: Icon(
-                                                              Icons
-                                                                  .minimize_sharp,
-                                                              color: Colors
-                                                                  .black)))
-                                                ],
+                              return Dismissible(
+                                key: UniqueKey(),
+                                background: Container(
+                                  alignment: AlignmentDirectional.centerStart,
+                                  color: Colors.red.shade400,
+                                  child: const Icon(Icons.delete_outline,
+                                      color: Colors.white, size: 35),
+                                ),
+                                onDismissed: (direction) {
+                                  setState(() {
+                                    controller.cartProductModel.removeAt(index);
+                                  });
+                                },
+                                direction: DismissDirection.startToEnd,
+                                child: Container(
+                                    height: 150,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                            height: 150,
+                                            width: 120,
+                                            child: Image.network(
+                                                controller
+                                                    .cartProductModel[index]
+                                                    .image,
+                                                fit: BoxFit.cover)),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 20),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              CustomText(
+                                                text: controller
+                                                    .cartProductModel[index]
+                                                    .name,
+                                                fontSize: 18,
                                               ),
-                                            )
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ));
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              CustomText(
+                                                text:
+                                                    '\$ ${controller.cartProductModel[index].price.toString()}',
+                                                color: primaryColor,
+                                              ),
+                                              const SizedBox(
+                                                height: 50,
+                                              ),
+                                              Container(
+                                                width: 140,
+                                                color: Colors.grey.shade200,
+                                                height: 40,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    GestureDetector(
+                                                        onTap: () {
+                                                          controller
+                                                              .increaseQuantity(
+                                                                  index);
+                                                        },
+                                                        child: const Icon(
+                                                            Icons.add,
+                                                            color:
+                                                                Colors.black)),
+                                                    const SizedBox(
+                                                      width: 20,
+                                                    ),
+                                                    CustomText(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      fontSize: 20,
+                                                      color: Colors.black,
+                                                      text: controller
+                                                          .cartProductModel[
+                                                              index]
+                                                          .quantity
+                                                          .toString(),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 20,
+                                                    ),
+                                                    GestureDetector(
+                                                        onTap: () {
+                                                          if (controller
+                                                                  .cartProductModel[
+                                                                      index]
+                                                                  .quantity >
+                                                              1)
+                                                            controller
+                                                                .decreaseQuantity(
+                                                                    index);
+                                                        },
+                                                        child: Container(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 15),
+                                                            child: const Icon(
+                                                                Icons
+                                                                    .minimize_sharp,
+                                                                color: Colors
+                                                                    .black)))
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                              );
                             },
                             itemCount: controller.cartProductModel.length,
                             separatorBuilder:
                                 (BuildContext context, int index) {
-                              return SizedBox(
+                              return const SizedBox(
                                 height: 20,
                               );
                             },
@@ -151,7 +183,7 @@ class CartView extends StatelessWidget {
                           children: [
                             Column(
                               children: [
-                                CustomText(
+                                const CustomText(
                                     text: 'TOTAL',
                                     fontSize: 22,
                                     color: Colors.grey),

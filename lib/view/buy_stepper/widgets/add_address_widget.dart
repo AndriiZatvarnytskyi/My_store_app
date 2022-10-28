@@ -5,6 +5,8 @@ import 'package:my_app/view/widgets/custom_text.dart';
 import 'package:my_app/view/widgets/custom_text_form_field.dart';
 
 class AddAddress extends StatefulWidget {
+  const AddAddress({super.key});
+
   @override
   State<AddAddress> createState() => _AddAddressState();
 }
@@ -18,16 +20,16 @@ class _AddAddressState extends State<AddAddress> {
         key: controller.fromState,
         child: Expanded(
           child: Padding(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  CustomText(
+                  const CustomText(
                     text: 'Billing address is the same as delivery addres',
                     fontSize: 20,
                     alignment: Alignment.center,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   CustomTextFormField(
@@ -41,7 +43,7 @@ class _AddAddressState extends State<AddAddress> {
                           return 'you must write your street';
                         }
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   CustomTextFormField(
@@ -55,7 +57,7 @@ class _AddAddressState extends State<AddAddress> {
                           return 'you must write your street';
                         }
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   CustomTextFormField(
@@ -69,7 +71,7 @@ class _AddAddressState extends State<AddAddress> {
                           return 'you must write your city';
                         }
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Container(
@@ -88,7 +90,7 @@ class _AddAddressState extends State<AddAddress> {
                               }
                             }),
                       ),
-                      SizedBox(width: 30),
+                      const SizedBox(width: 30),
                       Expanded(
                         child: CustomTextFormField(
                             text: 'Country',

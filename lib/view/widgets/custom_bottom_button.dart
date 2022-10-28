@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_app/constance.dart';
 import 'package:my_app/view/widgets/custom_text.dart';
 
-import 'custom_button.dart';
 
 class CustomBottomButton extends StatelessWidget {
   final String text;
@@ -14,7 +11,8 @@ class CustomBottomButton extends StatelessWidget {
 
   final void Function()? onPressed;
   const CustomBottomButton(
-      {required this.text,
+      {super.key,
+      required this.text,
       required this.onPressed,
       required this.color,
       this.fontSize = 20,
@@ -29,7 +27,7 @@ class CustomBottomButton extends StatelessWidget {
             border: Border.all(width: 3, color: primaryColor)),
         width: 150,
         height: 60,
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           top: 20,
           bottom: 20,
         ),

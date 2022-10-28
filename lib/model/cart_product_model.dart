@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:my_app/helper/extenstion.dart';
-
 class CartProductModel {
   late String productId, name, image, price;
   late int quantity;

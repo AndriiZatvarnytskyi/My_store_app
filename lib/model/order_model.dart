@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:my_app/model/cart_product_model.dart';
 
 class OrderModel {
@@ -13,7 +12,7 @@ class OrderModel {
     required this.products,
   });
   factory OrderModel.fromMap(Map<String, dynamic> map) {
-    return new OrderModel(
+    return OrderModel(
         userId: map['userId'] as String,
         dataTime: map['dataTime'] as String,
         address: map['address'] as Address,
@@ -41,7 +40,7 @@ class Address {
     required this.country,
   });
   factory Address.fromMap(Map<String, dynamic> map) {
-    return new Address(
+    return Address(
         street1: map['street1'] as String,
         street2: map['street2'] as String,
         city: map['city'] as String,

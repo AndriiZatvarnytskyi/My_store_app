@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../../constance.dart';
-
 import 'custom_text.dart';
 
 class CustomButton extends StatelessWidget {
@@ -16,11 +13,12 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         style: ButtonStyle(
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                EdgeInsets.all(18)),
+                const EdgeInsets.all(18)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10))),
-            backgroundColor: MaterialStatePropertyAll<Color>(primaryColor)),
+            backgroundColor:
+                const MaterialStatePropertyAll<Color>(primaryColor)),
         child: CustomText(
           alignment: Alignment.center,
           text: text,

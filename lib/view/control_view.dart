@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:my_app/constance.dart';
 import 'package:my_app/core/view_model/auth_view_model.dart';
 import 'package:my_app/view/auth/login_view.dart';
-import 'package:my_app/view/home_view.dart';
-
 import '../core/view_model/control_view_model.dart';
-import 'cart_view.dart';
-import 'profile_view.dart';
 
 class ControlView extends GetWidget<AuthViewModel> {
+  const ControlView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -31,9 +28,10 @@ class ControlView extends GetWidget<AuthViewModel> {
         builder: ((controller) => BottomNavigationBar(
               items: [
                 BottomNavigationBarItem(
-                    activeIcon: Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
-                      child: Text('Shop'),
+                    activeIcon: const Padding(
+                      padding: EdgeInsets.only(top: 18.0),
+                      child:
+                          Text('Shop', style: TextStyle(color: primaryColor)),
                     ),
                     label: '',
                     icon: Container(
@@ -45,9 +43,10 @@ class ControlView extends GetWidget<AuthViewModel> {
                       ),
                     )),
                 BottomNavigationBarItem(
-                    activeIcon: Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
-                      child: Text('Cart'),
+                    activeIcon: const Padding(
+                      padding: EdgeInsets.only(top: 18.0),
+                      child:
+                          Text('Cart', style: TextStyle(color: primaryColor)),
                     ),
                     label: '',
                     icon: Container(
@@ -59,9 +58,12 @@ class ControlView extends GetWidget<AuthViewModel> {
                       ),
                     )),
                 BottomNavigationBarItem(
-                    activeIcon: Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
-                      child: Text('Account'),
+                    activeIcon: const Padding(
+                      padding: EdgeInsets.only(top: 18.0),
+                      child: Text('Account',
+                          style: TextStyle(
+                            color: primaryColor,
+                          )),
                     ),
                     label: '',
                     icon: Container(

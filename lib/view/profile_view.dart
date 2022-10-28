@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_app/constance.dart';
 import 'package:my_app/view/auth/login_view.dart';
 import 'package:my_app/view/widgets/custom_text.dart';
 
 import '../core/view_model/profile_view_model.dart';
 
 class ProfoleView extends StatelessWidget {
+  const ProfoleView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProfileViewModel>(
       init: ProfileViewModel(),
       builder: (controller) => controller.loading.value
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : Scaffold(
               body: Container(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 70,
                 ),
                 child: SingleChildScrollView(
@@ -29,8 +32,8 @@ class ProfoleView extends StatelessWidget {
                               width: 90,
                               height: 90,
                               decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100)),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(100)),
                                 image: DecorationImage(
                                     image: NetworkImage(controller
                                         .userModel!.pic
@@ -54,36 +57,37 @@ class ProfoleView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Container(
                       child: TextButton(
                         onPressed: () {},
                         child: ListTile(
-                          title: CustomText(
+                          title: const CustomText(
                             text: 'Edit Profile',
                           ),
                           leading: Image.asset(
                             'assets/menu_icons/pencil.png',
                             height: 25,
+                            color: primaryColor,
                             width: 25,
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.navigate_next,
                             color: Colors.black,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
                       child: TextButton(
                         onPressed: () {},
                         child: ListTile(
-                          title: CustomText(
+                          title: const CustomText(
                             text: 'Shopping Address',
                           ),
                           leading: Image.asset(
@@ -91,21 +95,21 @@ class ProfoleView extends StatelessWidget {
                             height: 25,
                             width: 25,
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.navigate_next,
                             color: Colors.black,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
                       child: TextButton(
                         onPressed: () {},
                         child: ListTile(
-                          title: CustomText(
+                          title: const CustomText(
                             text: 'Order History',
                           ),
                           leading: Image.asset(
@@ -113,21 +117,21 @@ class ProfoleView extends StatelessWidget {
                             height: 25,
                             width: 25,
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.navigate_next,
                             color: Colors.black,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
                       child: TextButton(
                         onPressed: () {},
                         child: ListTile(
-                          title: CustomText(
+                          title: const CustomText(
                             text: 'Cards',
                           ),
                           leading: Image.asset(
@@ -135,21 +139,21 @@ class ProfoleView extends StatelessWidget {
                             height: 25,
                             width: 25,
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.navigate_next,
                             color: Colors.black,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
                       child: TextButton(
                         onPressed: () {},
                         child: ListTile(
-                          title: CustomText(
+                          title: const CustomText(
                             text: 'Notifications',
                           ),
                           leading: Image.asset(
@@ -157,14 +161,14 @@ class ProfoleView extends StatelessWidget {
                             height: 25,
                             width: 25,
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.navigate_next,
                             color: Colors.black,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
@@ -174,7 +178,7 @@ class ProfoleView extends StatelessWidget {
                           Get.offAll(LoginView());
                         },
                         child: ListTile(
-                          title: CustomText(
+                          title: const CustomText(
                             text: 'Log Out',
                           ),
                           leading: Image.asset(
