@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
       required this.validator});
 
   final String text;
+
   final String hint;
   final void Function(String?)? onSave;
   final String? Function(String?)? validator;

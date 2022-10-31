@@ -12,6 +12,8 @@ import 'register_view.dart';
 class LoginView extends GetWidget<AuthViewModel> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  LoginView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,101 +23,149 @@ class LoginView extends GetWidget<AuthViewModel> {
             const EdgeInsets.only(top: 100, right: 20, left: 20, bottom: 60),
         child: Form(
           key: _formKey,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const CustomText(text: 'Welcome,', fontSize: 30),
-                  InkWell(
-                    onTap: () {
-                      Get.to(RegisterView());
-                    },
-                    child: const CustomText(
-                        text: 'Sign Up', fontSize: 18, color: primaryColor),
-                  ),
-                ],
-              ),
-              const CustomText(
-                text: 'Sign in to Continue',
-                fontSize: 14,
-                color: Colors.grey,
-              ),
-              Expanded(child: Container()),
-              CustomTextFormField(
-                text: 'Email',
-                hint: 'iamdavid@gmail.com',
-                onSave: (value) {
-                  controller.email = value!;
-                },
-                validator: (value) {
-                  if (value == null) {
-                    print('ERROR');
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              CustomTextFormField(
-                text: 'Password',
-                hint: '*********',
-                onSave: (value) {
-                  controller.password = value!;
-                },
-                validator: (value) {
-                  if (value == null) {
-                    print('ERROR');
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const CustomText(
-                text: 'Forgot Password?',
-                fontSize: 14,
-                alignment: Alignment.topRight,
-              ),
-              const SizedBox(
-                height: 70,
-              ),
-              CustomButton(
-                text: 'SIGN IN',
-                onPressed: () {
-                  _formKey.currentState!.save();
-                  if (_formKey.currentState!.validate()) {
-                    controller.signInWithEmailAndPassword();
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const CustomText(
-                text: '-OR-',
-                alignment: Alignment.center,
-              ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const CustomText(text: 'Welcome,', fontSize: 30),
+                    InkWell(
+                      onTap: () {
+                        Get.to(RegisterView());
+                      },
+                      child: const CustomText(
+                          text: 'Sign Up', fontSize: 18, color: primaryColor),
+                    ),
+                  ],
+                ),
+                const CustomText(
+                  text: 'Sign in to Continue',
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
+                SizedBox(
+                  height: 100,
+                ),
 
-              // CustomButtonSocial(
-              //   onPressed: () {
-              //     // controller.facebookSigningMethod();
-              //   },
-              //   text: 'Sign In with Facebook',
-              //   imageName: 'assets/icons/facebook.png',
-              // ),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomButtonSocial(
-                onPressed: () {
-                  controller.signInWithGoogle();
-                },
-                text: 'Sign In with Google',
-                imageName: 'assets/icons/google.png',
-              )
-            ],
+                CustomTextFormField(
+                  text: 'Email',
+                  hint: 'iamdavid@gmail.com',
+                  onSave: (value) {
+                    controller.email = value!;
+                  },
+                  validator: (value) {
+                    if (value == null) {
+                      print('ERROR');
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+
+                PasswordTextFormField(),
+
+                const SizedBox(
+                  height: 10,
+                ),
+                const CustomText(
+                  text: 'Forgot Password?',
+                  fontSize: 14,
+                  alignment: Alignment.topRight,
+                ),
+                const SizedBox(
+                  height: 70,
+                ),
+                CustomButton(
+                  text: 'SIGN IN',
+                  onPressed: () {
+                    _formKey.currentState!.save();
+                    if (_formKey.currentState!.validate()) {
+                      controller.signInWithEmailAndPassword();
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const CustomText(
+                  text: '-OR-',
+                  alignment: Alignment.center,
+                ),
+
+                // CustomButtonSocial(
+                //   onPressed: () {
+                //     // controller.facebookSigningMethod();
+                //   },
+                //   text: 'Sign In with Facebook',
+                //   imageName: 'assets/icons/facebook.png',
+                // ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomButtonSocial(
+                  onPressed: () {
+                    controller.signInWithGoogle();
+                  },
+                  text: 'Sign In with Google',
+                  imageName: 'assets/icons/google.png',
+                )
+              ],
+            ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class PasswordTextFormField extends StatefulWidget {
+  const PasswordTextFormField({super.key});
+
+  @override
+  State<PasswordTextFormField> createState() => _PasswordTextFormFieldState();
+}
+
+class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
+  bool _obscureText = true;
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<AuthViewModel>(
+      init: AuthViewModel(),
+      builder: (controller) => Container(
+        child: Column(
+          children: [
+            CustomText(
+              text: 'Password',
+              fontSize: 14,
+              color: Colors.grey.shade900,
+            ),
+            TextFormField(
+              onSaved: (value) {
+                controller.password = value!;
+              },
+              validator: (value) {
+                if (value == null) {
+                  print('ERROR');
+                }
+              },
+              obscureText: _obscureText,
+              decoration: InputDecoration(
+                  suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                      child: Icon(_obscureText
+                          ? Icons.visibility_off
+                          : Icons.visibility)),
+                  hintText: '*********',
+                  hintStyle: TextStyle(color: Colors.grey),
+                  fillColor: Colors.white),
+            ),
+          ],
         ),
       ),
     );

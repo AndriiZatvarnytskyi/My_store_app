@@ -9,6 +9,7 @@ import 'package:my_app/helper/local_storage_data.dart';
 import 'package:my_app/model/user_model.dart';
 import 'package:my_app/view/home_view.dart';
 
+import '../../constance.dart';
 import '../../view/control_view.dart';
 import '../services/firestore_user.dart';
 
@@ -105,9 +106,7 @@ class AuthViewModel extends GetxController {
         userId: user.user!.uid,
         email: user.user!.email,
         name: user.user!.displayName == null ? name : user.user!.displayName,
-        pic: user.user!.photoURL == null
-            ? 'https://firebasestorage.googleapis.com/v0/b/my-app-7759c.appspot.com/o/nike%20blue%20hoodie.png?alt=media&token=1bca89fd-da5e-4559-bff9-a08407674aad'
-            : user.user!.photoURL);
+        pic: user.user!.photoURL == null ? profileImage : user.user!.photoURL);
     await FireStoreUser().addUserToFireStore(userModel);
     setUser(userModel);
   }
