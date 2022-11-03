@@ -9,12 +9,11 @@ import 'widgets/add_address_widget.dart';
 import 'widgets/delevery_time_widget.dart';
 import 'widgets/summary_widget.dart';
 
-//import 'stepper.dart';
-
 class BuyStepperView extends StatefulWidget {
   const BuyStepperView({super.key});
 
   @override
+  // ignore_for_file: library_private_types_in_public_api
   _BuyStepperView createState() => _BuyStepperView();
 }
 
@@ -36,36 +35,31 @@ class _BuyStepperView extends State<BuyStepperView> {
                 height: 15,
               ),
               DotStepper(
-                // direction: Axis.vertical,
                 dotCount: dotCount,
                 dotRadius: 15,
-
                 activeStep: activeStep,
                 shape: Shape.circle,
                 spacing: 100,
                 indicator: Indicator.blink,
                 lineConnectorsEnabled: true,
-
                 onDotTapped: (tappedDotIndex) {
                   controller.displayIndex(tappedDotIndex);
                   activeStep = controller.index;
                 },
-
                 fixedDotDecoration: FixedDotDecoration(
                   color: Colors.grey.shade300,
                   strokeWidth: 1,
                 ),
-
                 indicatorDecoration: const IndicatorDecoration(
                   color: primaryColor,
                 ),
               ),
               Container(
-                  child: controller.pages == Pages.DeliveryTime
-                      ? DeliveryTime()
-                      : controller.pages == Pages.AddAddress
-                          ? AddAddress()
-                          : Summary()),
+                  child: controller.pages == Pages.deliveryTimeScreen
+                      ? const DeliveryTime()
+                      : controller.pages == Pages.addAddressScreen
+                          ? const AddAddress()
+                          : const Summary()),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Row(
@@ -81,7 +75,7 @@ class _BuyStepperView extends State<BuyStepperView> {
                               controller.changeIndex(
                                 controller.index - 1,
                               );
-                              print(controller.index);
+
                               activeStep = controller.index;
                             });
                           } else {
@@ -105,7 +99,6 @@ class _BuyStepperView extends State<BuyStepperView> {
                               controller.index + 1,
                             );
                             activeStep = controller.index;
-                            print(controller.index);
                           });
                         } else {
                           return;

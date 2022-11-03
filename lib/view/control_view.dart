@@ -34,7 +34,7 @@ class ControlView extends GetWidget<AuthViewModel> {
                           Text('Shop', style: TextStyle(color: primaryColor)),
                     ),
                     label: '',
-                    icon: Container(
+                    icon: SizedBox(
                       width: 25,
                       height: 25,
                       child: Image.asset(
@@ -49,7 +49,7 @@ class ControlView extends GetWidget<AuthViewModel> {
                           Text('Cart', style: TextStyle(color: primaryColor)),
                     ),
                     label: '',
-                    icon: Container(
+                    icon: SizedBox(
                       width: 25,
                       height: 25,
                       child: Image.asset(
@@ -66,7 +66,7 @@ class ControlView extends GetWidget<AuthViewModel> {
                           )),
                     ),
                     label: '',
-                    icon: Container(
+                    icon: SizedBox(
                       width: 25,
                       height: 25,
                       child: Image.asset(

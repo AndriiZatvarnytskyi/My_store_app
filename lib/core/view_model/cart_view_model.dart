@@ -7,7 +7,7 @@ import '../../model/cart_product_model.dart';
 class CartViewModel extends GetxController {
   ValueNotifier<bool> get loading => _loading;
 
-  ValueNotifier<bool> _loading = ValueNotifier(false);
+  final ValueNotifier<bool> _loading = ValueNotifier(false);
 
   List<CartProductModel> _cartProductModel = [];
   List<CartProductModel> get cartProductModel => _cartProductModel;

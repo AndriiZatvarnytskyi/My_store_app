@@ -6,9 +6,9 @@ import '../services/category_product_services.dart';
 
 class GadgetCategoryViewModel extends GetxController {
   List<ProductModel> get gadgetProductModel => _gadgetProductModel;
-  List<ProductModel> _gadgetProductModel = [];
+  final List<ProductModel> _gadgetProductModel = [];
   ValueNotifier<bool> get loading => _loading;
-  ValueNotifier<bool> _loading = ValueNotifier(false);
+  final ValueNotifier<bool> _loading = ValueNotifier(false);
 
   GadgetCategoryViewModel() {
     getGadgetProduct();

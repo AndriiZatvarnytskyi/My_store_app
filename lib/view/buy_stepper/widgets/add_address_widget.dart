@@ -42,6 +42,7 @@ class _AddAddressState extends State<AddAddress> {
                         if (value!.isEmpty) {
                           return 'you must write your street';
                         }
+                        return null;
                       }),
                   const SizedBox(
                     height: 40,
@@ -56,6 +57,7 @@ class _AddAddressState extends State<AddAddress> {
                         if (value!.isEmpty) {
                           return 'you must write your street';
                         }
+                        return null;
                       }),
                   const SizedBox(
                     height: 40,
@@ -70,42 +72,42 @@ class _AddAddressState extends State<AddAddress> {
                         if (value!.isEmpty) {
                           return 'you must write your city';
                         }
+                        return null;
                       }),
                   const SizedBox(
                     height: 40,
                   ),
-                  Container(
-                    //width: Get.width,
-                    child: Row(children: [
-                      Expanded(
-                        child: CustomTextFormField(
-                            text: 'State',
-                            hint: 'Lagos State',
-                            onSave: (value) {
-                              controller.state = value!;
-                            },
-                            validator: (String? value) {
-                              if (value!.isEmpty) {
-                                return 'you must write your state';
-                              }
-                            }),
-                      ),
-                      const SizedBox(width: 30),
-                      Expanded(
-                        child: CustomTextFormField(
-                            text: 'Country',
-                            hint: 'Nigeria',
-                            onSave: (value) {
-                              controller.country = value!;
-                            },
-                            validator: (String? value) {
-                              if (value!.isEmpty) {
-                                return 'you must write your country';
-                              }
-                            }),
-                      ),
-                    ]),
-                  ),
+                  Row(children: [
+                    Expanded(
+                      child: CustomTextFormField(
+                          text: 'State',
+                          hint: 'Lagos State',
+                          onSave: (value) {
+                            controller.state = value!;
+                          },
+                          validator: (String? value) {
+                            if (value!.isEmpty) {
+                              return 'you must write your state';
+                            }
+                            return null;
+                          }),
+                    ),
+                    const SizedBox(width: 30),
+                    Expanded(
+                      child: CustomTextFormField(
+                          text: 'Country',
+                          hint: 'Nigeria',
+                          onSave: (value) {
+                            controller.country = value!;
+                          },
+                          validator: (String? value) {
+                            if (value!.isEmpty) {
+                              return 'you must write your country';
+                            }
+                            return null;
+                          }),
+                    ),
+                  ]),
                 ],
               ),
             ),

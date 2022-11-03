@@ -35,13 +35,9 @@ remove_alpha_ios: true
 image_path: "assets/icons/playstore.png"
 
 dev_dependencies:
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
-
-#flutter_icons:
-#android: true
-#ios: true
-#image_path: "assets/icons/playstore.png"
 
 flutter:
   uses-material-design: true

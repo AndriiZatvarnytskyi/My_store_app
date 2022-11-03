@@ -6,9 +6,9 @@ import '../services/category_product_services.dart';
 
 class GamingCategoryViewModel extends GetxController {
   List<ProductModel> get gamingProductModel => _gamingProductModel;
-  List<ProductModel> _gamingProductModel = [];
+  final List<ProductModel> _gamingProductModel = [];
   ValueNotifier<bool> get loading => _loading;
-  ValueNotifier<bool> _loading = ValueNotifier(false);
+  final ValueNotifier<bool> _loading = ValueNotifier(false);
 
   GamingCategoryViewModel() {
     getGamingProduct();

@@ -7,7 +7,7 @@ class UserModel {
       required this.pic});
 
   UserModel.fromJson(Map<dynamic, dynamic> map) {
-    if (map == null) {
+    if (map.isEmpty) {
       return;
     }
     userId = map['userId'];

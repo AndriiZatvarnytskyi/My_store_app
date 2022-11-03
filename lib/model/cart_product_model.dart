@@ -11,7 +11,7 @@ class CartProductModel {
   });
 
   CartProductModel.fromJson(Map<dynamic, dynamic> map) {
-    if (map == null) {
+    if (map.isEmpty) {
       return;
     }
     name = map['name'];

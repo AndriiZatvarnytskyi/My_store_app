@@ -9,23 +9,23 @@ class ControlViewModel extends GetxController {
 
   get navigatorValue => _navigatorValue;
   get currentScreen => _currentScreen;
-  Widget _currentScreen = HomeView();
+  Widget _currentScreen = const HomeView();
   void changeSelectedValue(int selectedValue) {
     _navigatorValue = selectedValue;
     switch (selectedValue) {
       case 0:
         {
-          _currentScreen = HomeView();
+          _currentScreen = const HomeView();
           break;
         }
       case 1:
         {
-          _currentScreen = CartView();
+          _currentScreen = const CartView();
           break;
         }
       case 2:
         {
-          _currentScreen = ProfoleView();
+          _currentScreen = const ProfoleView();
           break;
         }
     }

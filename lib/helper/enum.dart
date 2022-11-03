@@ -1,10 +1,7 @@
 enum Pages {
-  DeliveryTime,
-  AddAddress,
-  Summary,
+  deliveryTimeScreen,
+  addAddressScreen,
+  summaryScreen,
 }
- enum Delivery {
-  StandardDelivery,
-  NextDayDelivery,
-  NominatedDelivery
- }
+
+enum Delivery { standardDelivery, nextDayDelivery, nominatedDelivery }

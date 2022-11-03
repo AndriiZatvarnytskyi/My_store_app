@@ -8,6 +8,7 @@ import '../model/cart_product_model.dart';
 import '../model/ptoduct_model.dart';
 import 'widgets/custom_text.dart';
 
+// ignore: must_be_immutable
 class DetailsView extends StatelessWidget {
   ProductModel model;
   DetailsView({super.key, required this.model});
@@ -24,15 +25,12 @@ class DetailsView extends StatelessWidget {
             maxHeight: MediaQuery.of(context).size.height * 0.7,
             slideDirection: SlideDirection.DOWN,
             backdropEnabled: true,
-            panel: Container(
-                child: PageView.builder(
+            panel: PageView.builder(
               itemBuilder: (image, index) {
-                return Container(
-                  child: Image.network(model.image[index], fit: BoxFit.cover),
-                );
+                return Image.network(model.image[index], fit: BoxFit.cover);
               },
               itemCount: model.image.length,
-            )),
+            ),
             body: Container(
               alignment: Alignment.bottomCenter,
               child: Column(
@@ -46,11 +44,9 @@ class DetailsView extends StatelessWidget {
                         padding: const EdgeInsets.all(18),
                         child: Column(
                           children: [
-                            Container(
-                              child: CustomText(
-                                text: model.name,
-                                fontSize: 26,
-                              ),
+                            CustomText(
+                              text: model.name,
+                              fontSize: 26,
                             ),
                             const SizedBox(
                               height: 25,
@@ -153,7 +149,6 @@ class DetailsView extends StatelessWidget {
                                     quantity: 1,
                                     productId: model.productId,
                                   ));
-                                  ;
                                 },
                                 color: primaryColor))
                       ],

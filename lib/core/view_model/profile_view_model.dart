@@ -7,7 +7,7 @@ import 'package:my_app/model/user_model.dart';
 
 class ProfileViewModel extends GetxController {
   ValueNotifier<bool> get loading => _loadaing;
-  ValueNotifier<bool> _loadaing = ValueNotifier(false);
+  final ValueNotifier<bool> _loadaing = ValueNotifier(false);
 
   final LocalStorageData localStorageData = Get.find();
 

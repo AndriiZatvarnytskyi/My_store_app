@@ -6,9 +6,9 @@ import '../services/category_product_services.dart';
 
 class WomanCategoryViewModel extends GetxController {
   List<ProductModel> get womanProductModel => _womanProductModel;
-  List<ProductModel> _womanProductModel = [];
+  final List<ProductModel> _womanProductModel = [];
   ValueNotifier<bool> get loading => _loading;
-  ValueNotifier<bool> _loading = ValueNotifier(false);
+  final ValueNotifier<bool> _loading = ValueNotifier(false);
 
   WomanCategoryViewModel() {
     getWomanProduct();

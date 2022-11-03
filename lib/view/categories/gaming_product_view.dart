@@ -21,8 +21,8 @@ class GamingProductsView extends StatelessWidget {
                 title: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(child: const Text('GAMING')),
+                  children: const [
+                    Text('GAMING'),
                   ],
                 ),
               ),
@@ -37,46 +37,41 @@ class GamingProductsView extends StatelessWidget {
                         Get.to(DetailsView(
                             model: controller.gamingProductModel[index]));
                       },
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Container(
-                                width: 170,
-                                height: 200,
-                                child: Image.network(
-                                  controller.gamingProductModel[index].image[0],
-                                  fit: BoxFit.cover,
-                                )),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Container(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                              width: 170,
                               height: 200,
-                              width: 150,
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    fontSize: 21,
-                                    text: controller
-                                        .gamingProductModel[index].name,
-                                  ),
-                                  CustomText(
-                                    text: controller
-                                            .gamingProductModel[index].price
-                                            .toString() +
-                                        ' \$',
-                                    fontSize: 27,
-                                    color: primaryColor,
-                                  ),
-                                ],
-                              ),
+                              child: Image.network(
+                                controller.gamingProductModel[index].image[0],
+                                fit: BoxFit.cover,
+                              )),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            height: 200,
+                            width: 150,
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CustomText(
+                                  fontSize: 21,
+                                  text:
+                                      controller.gamingProductModel[index].name,
+                                ),
+                                CustomText(
+                                  text:
+                                      '${controller.gamingProductModel[index].price} \$',
+                                  fontSize: 27,
+                                  color: primaryColor,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     );
                   }),

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:my_app/core/services/home_services.dart';
@@ -8,13 +7,13 @@ import '../../model/ptoduct_model.dart';
 
 class HomeViewModel extends GetxController {
   ValueNotifier<bool> get loading => _loading;
-  ValueNotifier<bool> _loading = ValueNotifier(false);
+  final ValueNotifier<bool> _loading = ValueNotifier(false);
 
   List<CategoryModel> get categoryModel => _categoryModel;
-  List<CategoryModel> _categoryModel = [];
+  final List<CategoryModel> _categoryModel = [];
 
   List<ProductModel> get productModel => _productModel;
-  List<ProductModel> _productModel = [];
+  final List<ProductModel> _productModel = [];
 
   HomeViewModel() {
     getCategory();

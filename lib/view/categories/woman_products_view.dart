@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_app/constance.dart';
-
 import '../../core/view_model/woman_category_view_model.dart';
-
 import '../details_view.dart';
 import '../widgets/custom_text.dart';
 
@@ -23,8 +21,8 @@ class WomanProductsView extends StatelessWidget {
                 title: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(child: const Text('WOMAN')),
+                  children: const [
+                    Text('WOMAN'),
                   ],
                 ),
               ),
@@ -39,46 +37,41 @@ class WomanProductsView extends StatelessWidget {
                         Get.to(DetailsView(
                             model: controller.womanProductModel[index]));
                       },
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Container(
-                                width: 170,
-                                height: 200,
-                                child: Image.network(
-                                  controller.womanProductModel[index].image[0],
-                                  fit: BoxFit.cover,
-                                )),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Container(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                              width: 170,
                               height: 200,
-                              width: 150,
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    fontSize: 21,
-                                    text: controller
-                                        .womanProductModel[index].name,
-                                  ),
-                                  CustomText(
-                                    text: controller
-                                            .womanProductModel[index].price
-                                            .toString() +
-                                        ' \$',
-                                    fontSize: 27,
-                                    color: primaryColor,
-                                  ),
-                                ],
-                              ),
+                              child: Image.network(
+                                controller.womanProductModel[index].image[0],
+                                fit: BoxFit.cover,
+                              )),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            height: 200,
+                            width: 150,
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CustomText(
+                                  fontSize: 21,
+                                  text:
+                                      controller.womanProductModel[index].name,
+                                ),
+                                CustomText(
+                                  text:
+                                      '${controller.womanProductModel[index].price} \$',
+                                  fontSize: 27,
+                                  color: primaryColor,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     );
                   }),

@@ -3,8 +3,6 @@ import 'package:my_app/model/cart_product_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../../../model/ptoduct_model.dart';
-
 class CartDatabaseHelper {
   CartDatabaseHelper._();
   static final CartDatabaseHelper db = CartDatabaseHelper._();

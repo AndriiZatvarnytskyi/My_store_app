@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'custom_text.dart';
 
 class CustomButtonSocial extends StatelessWidget {
@@ -19,6 +18,10 @@ class CustomButtonSocial extends StatelessWidget {
           borderRadius: BorderRadius.circular(10), color: Colors.grey.shade200),
       child: TextButton(
         onPressed: onPressed,
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)))),
         child: Row(
           children: [
             Image.asset(
@@ -34,10 +37,6 @@ class CustomButtonSocial extends StatelessWidget {
             ),
           ],
         ),
-        style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)))),
       ),
     );
   }

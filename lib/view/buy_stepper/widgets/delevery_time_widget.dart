@@ -11,7 +11,7 @@ class DeliveryTime extends StatefulWidget {
 }
 
 class _DeliveryTimeState extends State<DeliveryTime> {
-  Delivery delivery = Delivery.StandardDelivery;
+  Delivery delivery = Delivery.standardDelivery;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class _DeliveryTimeState extends State<DeliveryTime> {
               height: 50,
             ),
             RadioListTile<Delivery>(
-              value: Delivery.StandardDelivery,
+              value: Delivery.standardDelivery,
               groupValue: delivery,
               onChanged: (Delivery? value) {
                 setState(() {
@@ -44,7 +44,7 @@ class _DeliveryTimeState extends State<DeliveryTime> {
               height: 50,
             ),
             RadioListTile<Delivery>(
-              value: Delivery.NextDayDelivery,
+              value: Delivery.nextDayDelivery,
               groupValue: delivery,
               onChanged: (Delivery? value) {
                 setState(() {
@@ -66,7 +66,7 @@ class _DeliveryTimeState extends State<DeliveryTime> {
               height: 50,
             ),
             RadioListTile<Delivery>(
-              value: Delivery.NominatedDelivery,
+              value: Delivery.nominatedDelivery,
               groupValue: delivery,
               onChanged: (Delivery? value) {
                 setState(() {

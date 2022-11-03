@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_app/view/auth/login_view.dart';
-
-import '../../constance.dart';
 import '../../core/view_model/auth_view_model.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text.dart';
@@ -10,12 +8,14 @@ import '../widgets/custom_text_form_field.dart';
 
 class RegisterView extends GetWidget<AuthViewModel> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  RegisterView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        padding: EdgeInsets.only(top: 100),
+        padding: const EdgeInsets.only(top: 100),
         child: Form(
           key: _formKey,
           child: Column(
@@ -23,7 +23,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 color: Colors.black,
                 onPressed: (() {
                   Get.off(LoginView());
@@ -34,22 +34,22 @@ class RegisterView extends GetWidget<AuthViewModel> {
                     top: 30, right: 20, left: 20, bottom: 60),
                 child: Column(
                   children: [
-                    CustomText(text: 'Sign Up,', fontSize: 30),
+                    const CustomText(text: 'Sign Up,', fontSize: 30),
                     const SizedBox(
                       height: 40,
                     ),
                     CustomTextFormField(
-                      text: 'Name',
-                      hint: 'Pesa',
-                      onSave: (value) {
-                        controller.name = value!;
-                      },
-                      validator: (value) {
-                        if (value == null) {
-                          print('ERROR');
-                        }
-                      },
-                    ),
+                        text: 'Name',
+                        hint: 'Pesa',
+                        onSave: (value) {
+                          controller.name = value!;
+                        },
+                        validator: (String? value) {
+                          if (value!.isEmpty) {
+                            return 'you must write your name';
+                          }
+                          return null;
+                        }),
                     const SizedBox(
                       height: 40,
                     ),
@@ -59,10 +59,11 @@ class RegisterView extends GetWidget<AuthViewModel> {
                       onSave: (value) {
                         controller.email = value!;
                       },
-                      validator: (value) {
-                        if (value == null) {
-                          print('ERROR');
+                      validator: (String? value) {
+                        if (value!.isEmpty) {
+                          return 'you must write your email';
                         }
+                        return null;
                       },
                     ),
                     const SizedBox(
@@ -74,16 +75,17 @@ class RegisterView extends GetWidget<AuthViewModel> {
                       onSave: (value) {
                         controller.password = value!;
                       },
-                      validator: (value) {
-                        if (value == null) {
-                          print('ERROR');
+                      validator: (String? value) {
+                        if (value!.isEmpty) {
+                          return 'you must write password';
                         }
+                        return null;
                       },
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 70,
                     ),
                     CustomButton(
@@ -95,7 +97,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                         }
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                   ],

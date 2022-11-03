@@ -44,27 +44,27 @@ class LoginView extends GetWidget<AuthViewModel> {
                   fontSize: 14,
                   color: Colors.grey,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
 
                 CustomTextFormField(
-                  text: 'Email',
-                  hint: 'iamdavid@gmail.com',
-                  onSave: (value) {
-                    controller.email = value!;
-                  },
-                  validator: (value) {
-                    if (value == null) {
-                      print('ERROR');
-                    }
-                  },
-                ),
+                    text: 'Email',
+                    hint: 'iamdavid@gmail.com',
+                    onSave: (value) {
+                      controller.email = value!;
+                    },
+                    validator: (String? value) {
+                      if (value!.isEmpty) {
+                        return 'you must write your email';
+                      }
+                      return null;
+                    }),
                 const SizedBox(
                   height: 40,
                 ),
 
-                PasswordTextFormField(),
+                const PasswordTextFormField(),
 
                 const SizedBox(
                   height: 10,
@@ -133,40 +133,39 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
   Widget build(BuildContext context) {
     return GetBuilder<AuthViewModel>(
       init: AuthViewModel(),
-      builder: (controller) => Container(
-        child: Column(
-          children: [
-            CustomText(
-              text: 'Password',
-              fontSize: 14,
-              color: Colors.grey.shade900,
-            ),
-            TextFormField(
-              onSaved: (value) {
-                controller.password = value!;
-              },
-              validator: (value) {
-                if (value == null) {
-                  print('ERROR');
-                }
-              },
-              obscureText: _obscureText,
-              decoration: InputDecoration(
-                  suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _obscureText = !_obscureText;
-                        });
-                      },
-                      child: Icon(_obscureText
-                          ? Icons.visibility_off
-                          : Icons.visibility)),
-                  hintText: '*********',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  fillColor: Colors.white),
-            ),
-          ],
-        ),
+      builder: (controller) => Column(
+        children: [
+          CustomText(
+            text: 'Password',
+            fontSize: 14,
+            color: Colors.grey.shade900,
+          ),
+          TextFormField(
+            onSaved: (value) {
+              controller.password = value!;
+            },
+            validator: (String? value) {
+              if (value!.isEmpty) {
+                return 'you must write password';
+              }
+              return null;
+            },
+            obscureText: _obscureText,
+            decoration: InputDecoration(
+                suffixIcon: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                    child: Icon(_obscureText
+                        ? Icons.visibility_off
+                        : Icons.visibility)),
+                hintText: '*********',
+                hintStyle: const TextStyle(color: Colors.grey),
+                fillColor: Colors.white),
+          ),
+        ],
       ),
     );
   }

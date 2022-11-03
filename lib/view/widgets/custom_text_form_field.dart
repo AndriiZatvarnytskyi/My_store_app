@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'custom_text.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -18,24 +17,22 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          CustomText(
-            text: text,
-            fontSize: 14,
-            color: Colors.grey.shade900,
-          ),
-          TextFormField(
-            onSaved: onSave,
-            validator: validator,
-            decoration: InputDecoration(
-                hintText: hint,
-                hintStyle: const TextStyle(color: Colors.grey),
-                fillColor: Colors.white),
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        CustomText(
+          text: text,
+          fontSize: 14,
+          color: Colors.grey.shade900,
+        ),
+        TextFormField(
+          onSaved: onSave,
+          validator: validator,
+          decoration: InputDecoration(
+              hintText: hint,
+              hintStyle: const TextStyle(color: Colors.grey),
+              fillColor: Colors.white),
+        )
+      ],
     );
   }
 }

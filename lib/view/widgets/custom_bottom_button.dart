@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:my_app/constance.dart';
 import 'package:my_app/view/widgets/custom_text.dart';
 
-
 class CustomBottomButton extends StatelessWidget {
   final String text;
   final Color color;
@@ -32,12 +31,12 @@ class CustomBottomButton extends StatelessWidget {
           bottom: 20,
         ),
         child: TextButton(
+            onPressed: onPressed,
             child: CustomText(
               alignment: Alignment.center,
               text: text,
               color: textColor,
               fontSize: fontSize,
-            ),
-            onPressed: onPressed));
+            )));
   }
 }

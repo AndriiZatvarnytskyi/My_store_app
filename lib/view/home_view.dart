@@ -7,7 +7,6 @@ import 'package:my_app/view/categories/woman_products_view.dart';
 import 'package:my_app/view/details_view.dart';
 import 'package:my_app/view/widgets/custom_button_category.dart';
 import 'package:my_app/view/widgets/custom_text.dart';
-
 import 'categories/gadgets_products_view.dart';
 import 'categories/gaming_product_view.dart';
 
@@ -70,29 +69,29 @@ class HomeView extends StatelessWidget {
   }
 
   Widget _listViewCategory() {
-    return Container(
+    return SizedBox(
       height: 100,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
           CustomButtonCategory(
             page: const WomanProductsView(),
-            category_name: 'Woman',
+            categoryName: 'Woman',
             image: 'woman',
           ),
           CustomButtonCategory(
             page: const ManProductsView(),
-            category_name: 'Man',
+            categoryName: 'Man',
             image: 'man',
           ),
           CustomButtonCategory(
             page: const GadgetProductsView(),
-            category_name: 'Gadgets',
+            categoryName: 'Gadgets',
             image: 'gadgets',
           ),
           CustomButtonCategory(
             page: const GamingProductsView(),
-            category_name: 'Gaming',
+            categoryName: 'Gaming',
             image: 'gaming',
           ),
         ],
@@ -103,7 +102,7 @@ class HomeView extends StatelessWidget {
   Widget _listViewProducts() {
     return GetBuilder<HomeViewModel>(
         init: HomeViewModel(),
-        builder: ((controller) => Container(
+        builder: ((controller) => SizedBox(
               height: 330,
               child: ListView.separated(
                 itemCount: controller.productModel.length,
@@ -114,13 +113,13 @@ class HomeView extends StatelessWidget {
                       Get.to(
                           DetailsView(model: controller.productModel[index]));
                     },
-                    child: Container(
+                    child: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.38,
                       child: Column(
                         children: [
-                          Container(
+                          SizedBox(
                               width: MediaQuery.of(context).size.width * 0.38,
-                              child: Container(
+                              child: SizedBox(
                                   height: 200,
                                   child: Image.network(
                                     controller.productModel[index].image[0],
