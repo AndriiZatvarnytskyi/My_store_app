@@ -18,7 +18,6 @@ class CustomButtonCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(right: 25),
       child: InkWell(
         onTap: () {
           Get.to(page);

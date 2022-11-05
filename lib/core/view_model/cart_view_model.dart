@@ -7,7 +7,7 @@ import '../../model/cart_product_model.dart';
 class CartViewModel extends GetxController {
   ValueNotifier<bool> get loading => _loading;
 
-  final ValueNotifier<bool> _loading = ValueNotifier(false);
+  ValueNotifier<bool> _loading = ValueNotifier(false);
 
   List<CartProductModel> _cartProductModel = [];
   List<CartProductModel> get cartProductModel => _cartProductModel;
@@ -51,6 +51,14 @@ class CartViewModel extends GetxController {
     _totalPrice +=
         (double.parse(cartProductModel.price) * cartProductModel.quantity);
 
+    update();
+  }
+
+  removeProduct(int index) async {
+    var dbHelper = CartDatabaseHelper.db;
+    dbHelper.removeProduct(_cartProductModel[index]);
+    _totalPrice -= (double.parse(_cartProductModel[index].price) *
+        _cartProductModel[index].quantity);
     update();
   }
 

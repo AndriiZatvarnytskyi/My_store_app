@@ -41,6 +41,19 @@ CREATE TABLE $tableCartProduct(
     return list;
   }
 
+  Future<dynamic> delete(String tableMame,
+      {required String where, required List<dynamic> whereArgs}) async {
+    var dbClient = await database;
+    List<Map> maps = await dbClient!.query(tableCartProduct);
+    return dbClient.delete(tableMame, where: where, whereArgs: whereArgs);
+  }
+
+  removeProduct(CartProductModel model) async {
+    var dbClient = await database;
+    var deleted = await dbClient!.delete(tableCartProduct,
+        where: '$columnProductId = ? ', whereArgs: [model.productId]);
+  }
+
   insert(CartProductModel model) async {
     var dbClient = await database;
     await dbClient!.insert(tableCartProduct, model.toJson(),

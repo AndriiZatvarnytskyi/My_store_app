@@ -71,8 +71,8 @@ class HomeView extends StatelessWidget {
   Widget _listViewCategory() {
     return SizedBox(
       height: 100,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomButtonCategory(
             page: const WomanProductsView(),

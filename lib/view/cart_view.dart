@@ -58,6 +58,7 @@ class _CartViewState extends State<CartView> {
                               ),
                               onDismissed: (direction) {
                                 setState(() {
+                                  controller.removeProduct(index);
                                   controller.cartProductModel.removeAt(index);
                                 });
                               },
