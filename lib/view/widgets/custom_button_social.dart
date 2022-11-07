@@ -30,7 +30,7 @@ class CustomButtonSocial extends StatelessWidget {
               width: 25,
             ),
             const SizedBox(
-              width: 90,
+              width: 80,
             ),
             CustomText(
               text: text,

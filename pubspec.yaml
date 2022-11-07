@@ -13,14 +13,15 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   google_sign_in: ^5.4.2
-  firebase_core: ^1.23.0
-  firebase_auth: ^3.10.0
-  cloud_firestore: ^3.5.0
+  flutter_facebook_auth: ^5.0.1
+  firebase_core: ^2.1.1
+  firebase_auth: ^4.1.1
+  cloud_firestore: ^4.0.4
   sqflite: ^2.1.0+1
   path: ^1.8.2
   shared_preferences: ^2.0.15
-  firebase_storage: ^10.3.11
-  firebase_crashlytics: ^2.9.0
+  firebase_storage: ^11.0.4
+  firebase_crashlytics: ^3.0.4
   flutter_svg: ^1.1.5
   status_change: ^2.0.0
   flutter_timeline: ^0.3.0
@@ -28,6 +29,8 @@ dependencies:
   sliding_up_panel: ^2.0.0+1
   carousel_slider: ^4.1.1
   flutter_launcher_icons: ^0.10.0
+  photo_view: ^0.14.0
+
 flutter_icons:
 android: true
 ios: true

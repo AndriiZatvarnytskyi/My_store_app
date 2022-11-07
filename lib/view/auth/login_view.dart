@@ -18,12 +18,12 @@ class LoginView extends GetWidget<AuthViewModel> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding:
-            const EdgeInsets.only(top: 100, right: 20, left: 20, bottom: 60),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(
+                top: 100, right: 20, left: 20, bottom: 60),
             child: Column(
               children: [
                 Row(
@@ -45,9 +45,8 @@ class LoginView extends GetWidget<AuthViewModel> {
                   color: Colors.grey,
                 ),
                 const SizedBox(
-                  height: 100,
+                  height: 90,
                 ),
-
                 CustomTextFormField(
                     text: 'Email',
                     hint: 'iamdavid@gmail.com',
@@ -63,9 +62,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                 const SizedBox(
                   height: 40,
                 ),
-
                 const PasswordTextFormField(),
-
                 const SizedBox(
                   height: 10,
                 ),
@@ -75,7 +72,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                   alignment: Alignment.topRight,
                 ),
                 const SizedBox(
-                  height: 70,
+                  height: 50,
                 ),
                 CustomButton(
                   text: 'SIGN IN',
@@ -93,14 +90,16 @@ class LoginView extends GetWidget<AuthViewModel> {
                   text: '-OR-',
                   alignment: Alignment.center,
                 ),
-
-                // CustomButtonSocial(
-                //   onPressed: () {
-                //     // controller.facebookSigningMethod();
-                //   },
-                //   text: 'Sign In with Facebook',
-                //   imageName: 'assets/icons/facebook.png',
-                // ),
+                const SizedBox(
+                  height: 30,
+                ),
+                CustomButtonSocial(
+                  onPressed: () {
+                    controller.logInWithFacebook();
+                  },
+                  text: 'Sign In with Facebook',
+                  imageName: 'assets/icons/facebook.png',
+                ),
                 const SizedBox(
                   height: 20,
                 ),

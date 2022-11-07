@@ -34,7 +34,7 @@ class CustomButtonCategory extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Image.asset(
                     'assets/category_icons/$image.png',
-                    color: primaryColor,
+                    color: Colors.black87,
                   ),
                 )),
             const SizedBox(
